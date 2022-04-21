@@ -58,7 +58,10 @@ public class Sort
 		int i = 0;
 		int j = 0;
 
+		// Left array is the beginning to the middle.
+		// + 1 to become - 1 to the middle. This stops left overlapping right arrays.
 		int[] leftArr = new int[middle - left + 1];
+		// Reight array size is the length(right) minus half.
 		int[] rightArr = new int[right - middle];
 
 		Array.Copy(input, left, leftArr, 0, middle - left + 1);
