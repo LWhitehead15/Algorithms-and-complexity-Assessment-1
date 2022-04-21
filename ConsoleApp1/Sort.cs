@@ -64,7 +64,12 @@ public class Sort
 		// Reight array size is the length(right) minus half.
 		int[] rightArr = new int[right - middle];
 
+		// Copy elements from input starting from left. Paste to leftArray starting at 0.
+		// Array range of left to the middle.
 		Array.Copy(input, left, leftArr, 0, middle - left + 1);
+
+		// Copy elements from input starting from middle + 1. Paste to rightArray starting at 0.
+		// Array range of middle to right.
 		Array.Copy(input, middle + 1, rightArr, 0, right - middle);
 
 		for (int e = left; e < right; e++)

@@ -8,20 +8,28 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\liamt\\.nuget\\packages\\": {}
+    "C:\\Users\\Computing\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\liamt\\Documents\\University Work\\Year 1\\Algorithms and Complexity\\Assessment 1\\SearchAndSort\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Computing\\Documents\\GitHub\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\ConsoleApp1.csproj",
       "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\liamt\\Documents\\University Work\\Year 1\\Algorithms and Complexity\\Assessment 1\\SearchAndSort\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\ConsoleApp1.csproj",
-      "packagesPath": "C:\\Users\\liamt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\liamt\\Documents\\University Work\\Year 1\\Algorithms and Complexity\\Assessment 1\\SearchAndSort\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\obj\\",
+      "projectPath": "C:\\Users\\Computing\\Documents\\GitHub\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\ConsoleApp1.csproj",
+      "packagesPath": "C:\\Users\\Computing\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Computing\\Documents\\GitHub\\Algorithms-and-complexity-Assessment-1\\ConsoleApp1\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
       "configFilePaths": [
-        "C:\\Users\\liamt\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Computing\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -60,7 +68,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
