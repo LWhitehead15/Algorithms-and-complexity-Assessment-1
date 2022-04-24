@@ -55,6 +55,7 @@ public class Sort
 	// Merge method for the Merge-Sort.
 	public static int[] Merge(int[] input, int left, int middle, int right)
 	{
+		// i = left counter j = right counter
 		int i = 0;
 		int j = 0;
 
@@ -72,25 +73,35 @@ public class Sort
 		// Array range of middle to right.
 		Array.Copy(input, middle + 1, rightArr, 0, right - middle);
 
+		// For each index value.
 		for (int e = left; e < right; e++)
         {
+			// If left array is empty, current index value is a
+			// right array index value. Increase right counter.
 			if (i == leftArr.Length)
 			{
 				input[e] = rightArr[j];
 				j++;
 			}
+			// If right array is empty, current index value is a
+			// left array index value. Increase left counter.
 			else if (j == rightArr.Length)
             {
 				input[e] = leftArr[i];
 				i++;
             }
+			// If value at current left array index is less or equal
+			// to value at current right array index. Current index value
+			// is a left array index value. Increase left counter.
 			else if (leftArr[i] <= rightArr[j])
 			{
 				input[e] = leftArr[i];
 				i++;
 			}
+			// Else current index value is a right array index.
+			// Increase right counter.
 			else
-            {
+			{
 				input[e] = rightArr[j];
 				j++;
             }
@@ -128,17 +139,22 @@ public class Sort
 	static int Partition(int[] input, int min, int max)
     {
 		int pivot = min - 1;
+		// For each index in the input array.
 		for (int i = min; i <= max; i++)
         {
+			// if the current index value is more than the end index value of input array.
 			if (input[i] > input[max])
             {
+				// Increase pivot and swap the value at the current pivot index with current index.
 				pivot++;
 				Swap(input[pivot], input[i]);
             }
         }
-
+		// Increase pivot, swap value at pivot index with value at end index.
 		pivot++;
 		Swap(input[pivot], input[max]);
+
+		// return the reference element index.
 		return pivot;
     }
 
@@ -146,7 +162,27 @@ public class Sort
 	// Insertion-Sort Algorithm.
 	public static int[] InsertionSort(int[] input)
 	{
+		int key = 0;
+		int prev = 0;
 
+		// Sort until array length has been reached.
+		for (int i = 1; i < input.Length; i++)
+        {
+			// key is the current value. Prev is the previous value.
+			key = input[i];
+			prev = i - 1;
+
+			// if prev value is more or equal to 0 and is more than current value.
+			while (prev >= 0 && input[prev] > key)
+            {
+				// the current value replaces the previous location value.
+				input[prev + 1] = input[prev];
+				// previous location is now the index before itself.
+				prev = prev - 1;
+            }
+			// Previous location value is replaced by current key value.
+			input[prev + 1] = key;
+        }
 
 		return input;
 	}

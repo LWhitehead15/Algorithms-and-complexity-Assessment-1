@@ -1,0 +1,5 @@
+C:\Users\liamt\Documents\University Work\Year 1\Algorithms and Complexity\Assessment 1\SearchAndSort\Algorithms-and-complexity-Assessment-1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.AssemblyReference.cache
+C:\Users\liamt\Documents\University Work\Year 1\Algorithms and Complexity\Assessment 1\SearchAndSort\Algorithms-and-complexity-Assessment-1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\liamt\Documents\University Work\Year 1\Algorithms and Complexity\Assessment 1\SearchAndSort\Algorithms-and-complexity-Assessment-1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfoInputs.cache
+C:\Users\liamt\Documents\University Work\Year 1\Algorithms and Complexity\Assessment 1\SearchAndSort\Algorithms-and-complexity-Assessment-1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.AssemblyInfo.cs
+C:\Users\liamt\Documents\University Work\Year 1\Algorithms and Complexity\Assessment 1\SearchAndSort\Algorithms-and-complexity-Assessment-1\ConsoleApp1\obj\Debug\net6.0\ConsoleApp1.csproj.CoreCompileInputs.cache
