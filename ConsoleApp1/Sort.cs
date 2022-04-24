@@ -2,11 +2,6 @@
 
 public class Sort
 {
-	// A method that exhanges array elements.
-	static void Swap(int x, int y)
-	{ x = y; y = x; }
-
-
 	// Bubble-Sort Algorithm.
 	public static int[] BubbleSort(int[] input)
 	{
@@ -42,14 +37,12 @@ public class Sort
 			MergeSort(input, middle + 1, right);
 
             Merge(input, left, middle, right);
-
-			return input;
 		}
-		else
+		else if (input.Length <= 1)
         {
-			Console.WriteLine("\n Error! Not enough values to sort.");
-			return input;
-		}
+			Console.WriteLine("\n Not enough values in file to sort. Please try again");
+        }
+		return input;
 	}
 
 	// Merge method for the Merge-Sort.
@@ -74,7 +67,7 @@ public class Sort
 		Array.Copy(input, middle + 1, rightArr, 0, right - middle);
 
 		// For each index value.
-		for (int e = left; e < right; e++)
+		for (int e = left; e < right + 1; e++)
         {
 			// If left array is empty, current index value is a
 			// right array index value. Increase right counter.
@@ -116,8 +109,6 @@ public class Sort
 		// (min must be specified as zero) and (max as array.length - 1) when called.
 		if (min >= max)
         {
-			// if there is less than one value, it cannot be sorted.
-			Console.WriteLine("\n Error! Not enough values to sort.");
 			return input;
         }
 
@@ -140,23 +131,29 @@ public class Sort
     {
 		int pivot = min - 1;
 		// For each index in the input array.
-		for (int i = min; i <= max; i++)
+		for (int i = min; i < max; i++)
         {
 			// if the current index value is more than the end index value of input array.
-			if (input[i] > input[max])
+			if (input[i] < input[max])
             {
 				// Increase pivot and swap the value at the current pivot index with current index.
 				pivot++;
-				Swap(input[pivot], input[i]);
+				Swap(ref input[pivot], ref input[i]);
             }
         }
 		// Increase pivot, swap value at pivot index with value at end index.
 		pivot++;
-		Swap(input[pivot], input[max]);
+		Swap(ref input[pivot], ref input[max]);
 
 		// return the reference element index.
 		return pivot;
     }
+
+	// A method that exhanges array elements.
+	static void Swap(ref int x, ref int y)
+	{
+		int t = x; x = y; y = t;
+	}
 
 
 	// Insertion-Sort Algorithm.
