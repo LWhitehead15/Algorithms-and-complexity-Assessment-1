@@ -6,47 +6,58 @@ public class Sort
 	public static int[] BubbleSort(int[] input)
 	{
 		int temp = input[0];
+		int steps = 0;
 
 		for (int i = 0; i < input.Length; i++)
 		{
 			// Sort until array length has been reached.
 			for (int j = i + 1; j < input.Length; j++)
 			{
-				// if value at index i > value at index j then swap.
+				// Add one step.
+				steps++;
+				// if value at index i > value at index j then swap. Plus 1 step.
 				if (input[i] > input[j])
 				{
+					steps++;
 					temp = input[i];
 					input[i] = input[j];
 					input[j] = temp;
 				}
 			}
 		}
+
+		// Add steps taken as the last extra element in array.
+		input = input.Append(steps).ToArray();
 		return input;
 	}
 
 
 	// Merge-Sort Algorithm.
-	public static int[] MergeSort(int[] input, int left, int right)
+	public static int[] MergeSort(int[] input, int left, int right, int steps)
 	{
 		// Only sorts if there is more than one value.
 		if (left < right)
 		{
 			int middle = (left + right) / 2;
 
-			MergeSort(input, left, middle);
-			MergeSort(input, middle + 1, right);
-
-            Merge(input, left, middle, right);
+			steps++;
+			MergeSort(input, left, middle, steps);
+			steps++;
+			MergeSort(input, middle + 1, right, steps);
+			steps = steps + 4 + (right - left);
+            Merge(input, left, middle, right, steps);
 		}
 		else if (input.Length <= 1)
         {
 			Console.WriteLine("\n Not enough values in file to sort. Please try again");
         }
+		// Add steps taken as the last extra element in array.
+		input = input.Append(steps).ToArray();
 		return input;
 	}
 
 	// Merge method for the Merge-Sort.
-	public static int[] Merge(int[] input, int left, int middle, int right)
+	public static int[] Merge(int[] input, int left, int middle, int right, int steps)
 	{
 		// i = left counter j = right counter
 		int i = 0;
@@ -104,49 +115,58 @@ public class Sort
 
 
 	// Quick-Sort Algorithm.
-	public static int[] QuickSort(int[] input, int min, int max)
+	public static int[] QuickSort(int[] input, int min, int max, int steps)
 	{
 		// (min must be specified as zero) and (max as array.length - 1) when called.
 		if (min >= max)
         {
+			steps++;
 			return input;
         }
 
-		// split input array into 3 parts.
-		// elements less than, equal to, or more than reference index.
-		int pivotIndex = Partition(input, min, max);
+        // split input array into 3 parts.
+        // elements less than, equal to, or more than reference index.
+        Tuple<int, int> pivot = Partition(input, min, max, steps);
+		int pivotIndex = pivot.Item1;
+		steps = pivot.Item2;
 
 		// Then sort the elements less than reference.
-		QuickSort(input, min, pivotIndex - 1);
+		steps++;
+		QuickSort(input, min, pivotIndex - 1, steps);
 
 		// Then recursively sort the elements more than reference.
-		QuickSort(input, pivotIndex + 1, max);
+		steps++;
+		QuickSort(input, pivotIndex + 1, max, steps);
 
-		// return the sorted array.
+		// Add steps taken as the last extra element in array.
+		input = input.Append(steps).ToArray();
 		return input;
 	}
 
 	// Method that returns the reference element index for dividing input array.
-	static int Partition(int[] input, int min, int max)
+	static Tuple<int, int> Partition(int[] input, int min, int max, int steps)
     {
 		int pivot = min - 1;
 		// For each index in the input array.
 		for (int i = min; i < max; i++)
         {
+			steps++;
 			// if the current index value is more than the end index value of input array.
 			if (input[i] < input[max])
             {
 				// Increase pivot and swap the value at the current pivot index with current index.
+				steps++;
 				pivot++;
 				Swap(ref input[pivot], ref input[i]);
             }
         }
 		// Increase pivot, swap value at pivot index with value at end index.
+		steps= steps + 4;
 		pivot++;
 		Swap(ref input[pivot], ref input[max]);
 
-		// return the reference element index.
-		return pivot;
+		// return the reference element index and steps.
+		return Tuple.Create(pivot, steps);
     }
 
 	// A method that exhanges array elements.
@@ -161,11 +181,14 @@ public class Sort
 	{
 		int key = 0;
 		int prev = 0;
+		int steps = 0;
 
 		// Sort until array length has been reached.
 		for (int i = 1; i < input.Length; i++)
         {
+
 			// key is the current value. Prev is the previous value.
+			steps++;
 			key = input[i];
 			prev = i - 1;
 
@@ -174,13 +197,18 @@ public class Sort
             {
 				// the current value replaces the previous location value.
 				input[prev + 1] = input[prev];
+				steps++;
 				// previous location is now the index before itself.
 				prev = prev - 1;
-            }
+				steps++;
+			}
 			// Previous location value is replaced by current key value.
 			input[prev + 1] = key;
+			steps++;
         }
 
+		// Add steps taken as the last extra element in array.
+		input = input.Append(steps).ToArray();
 		return input;
 	}
 }
