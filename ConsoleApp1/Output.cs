@@ -4,7 +4,29 @@ public class Output
 {
     public static void Interval(int[] input)
     {
+
+        //Perform interval output in ascending or descending.
         int freq = 0;
+        bool valid = false;
+        while (valid == false)
+        {
+            Console.WriteLine("\nWould you like to output the interval in Ascending or Descending order?:");
+            Console.WriteLine("Enter 0 for Ascending, 1 for descending order");
+            string choice = Console.ReadLine();
+            if (choice == "0")
+            {
+                valid = true;
+            }
+            else if (choice == "1")
+            {
+                valid = true;
+                Array.Reverse(input, 0, input.Length);
+            }
+            else
+            {
+                Console.WriteLine("Invalid entry... Please try again.");
+            }
+        }
 
         if (input.Length > 256)
         {
@@ -36,13 +58,13 @@ public class Output
             {
                 steps++;
                 index.Add(i + 1);
-            } else if (index.Count > 1 && value != input[i])
+            } else if (index.Count > 0 && value != input[i])
             {
                 break;
             }
         }
 
-       if (index.Count > 1)
+       if (index.Count > 0)
         {
             Console.WriteLine("\n" + input[index[0]] + " was found at positions " + string.Join(", ", index) + ".");
         }
@@ -66,6 +88,7 @@ public class Output
     {
         int search = 0;
         bool found = false;
+        index.Clear();
 
         for (int i = 0; i < input.Length; i++)
         {
@@ -87,15 +110,18 @@ public class Output
                         } else if (found == true && search != input[r])
                         {
                             Console.WriteLine(search + " at positions " + string.Join(", ", index) + ".");
-                            found = false;
                             break;
                         }
                     }
-                    if (found == true && index.Count > 0)
+                    if (found == true && e == input.Last())
                     {
                         Console.WriteLine(search + " at positions " + string.Join(", ", index) + ".");
                         break;
                     }
+                }
+                if (found == true)
+                {
+                    break;
                 }
             }
             if (found == true)
@@ -123,23 +149,25 @@ public class Output
                 for (int r = 0; r < input.Length; r++)
                 {
                     steps++;
-                    if (value == input[mid])
+                    if (value == input[r])
                     {
                         steps++;
                         index.Add(r + 1);
+                        found = true;
                     }
-                    if(found == true && value != input[mid])
+                    if(found == true && value != input[r])
                     {
                         Console.WriteLine(value + " at positions " + string.Join(", ", index) + ".");
                         found = false;
-                        break;
+                        return steps;
                     }
                 }
                 if (found == true && index.Count > 0)
                 {
                     Console.WriteLine(value + " at positions " + string.Join(", ", index) + ".");
-                    break;
+                    return steps;
                 }
+
             }
             else if (value < input[mid])
             {
@@ -152,6 +180,21 @@ public class Output
                 min = mid + 1;
             }
         }
+
+        if (index.Count == 0)
+        {
+            Console.WriteLine("\nThe value you are searching could not be found.");
+            Console.WriteLine("The closest values are...");
+
+            closest(value, input, steps, 1, index);
+            closest(value, input, steps, -1, index);
+
+            if (index.Count == 0)
+            {
+                Console.WriteLine("\nInput much greater than any values in the file. No close values.");
+            }
+        }
+
         return steps;
     }
 }
